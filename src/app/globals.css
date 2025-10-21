@@ -1,39 +1,82 @@
 @import "tailwindcss";
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/*
+ZYLO DESIGN SYSTEM - PIXEL-PERFECT REPLICATION
+Extracted from ai-generated-preview.png design reference
+
+Color Palette (Exact hex codes converted to HSL):
+- Navy Primary: #1e3a5f (209° 54% 25%) - Dark navy background
+- Navy Secondary: #2c4a6f (209° 45% 31%) - Slightly lighter navy
+- Blue Primary: #2196F3 (207° 90% 54%) - Main CTA and accent color
+- Blue Light: #42A5F5 (207° 89% 61%) - Icons and highlights
+- Blue Lighter: #64B5F6 (207° 89% 68%) - Network visualization
+- Light Background: #f5f5f5 (0° 0% 96%) - Section backgrounds
+- White: #ffffff (0° 0% 100%) - Cards and text on dark
+- Text Dark: #1a1a1a (0° 0% 10%) - Body text
+- Text Medium: #2d3748 (210° 29% 24%) - Secondary text
+
+Typography:
+- Font Family: Inter (sans-serif)
+- Hero Headline: 48-56px, weight: 700
+- Section Headers: 32-36px, weight: 700
+- Body Text: 16-18px, weight: 400
+- Navigation: 14-16px, weight: 500
+
+Spacing System:
+- Section Padding: 80-120px vertical
+- Card Gap: 24-32px
+- Button Padding: 12px 24px
+- Border Radius: 6-8px
+
+Visual Effects:
+- Button Shadow: 0 2px 8px rgba(33, 150, 243, 0.3)
+- Card Shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
 */
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  /* Zylo Brand Colors */
+  --navy-primary: 209 54% 25%;        /* #1e3a5f - Main dark background */
+  --navy-secondary: 209 45% 31%;      /* #2c4a6f - Lighter navy variant */
+  --blue-primary: 207 90% 54%;        /* #2196F3 - CTA buttons and accents */
+  --blue-light: 207 89% 61%;          /* #42A5F5 - Icons */
+  --blue-lighter: 207 89% 68%;        /* #64B5F6 - Network viz */
 
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  /* Semantic Colors */
+  --background: 0 0% 96%;              /* #f5f5f5 - Light sections */
+  --foreground: 0 0% 10%;              /* #1a1a1a - Dark text */
+
+  --card: 0 0% 100%;                   /* White cards */
+  --card-foreground: 210 29% 24%;      /* #2d3748 - Card text */
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover-foreground: 210 29% 24%;
 
-  --primary: 222.2 47.4% 11.2%;
-  --primary-foreground: 210 40% 98%;
+  /* Primary = Navy for headers/footers */
+  --primary: 209 54% 25%;              /* Navy primary */
+  --primary-foreground: 0 0% 100%;     /* White text on navy */
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
+  /* Secondary = Blue accent */
+  --secondary: 207 90% 54%;            /* Blue primary */
+  --secondary-foreground: 0 0% 100%;   /* White text on blue */
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 210 29% 24%;
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  /* Accent = Blue for CTAs */
+  --accent: 207 90% 54%;               /* Blue primary */
+  --accent-foreground: 0 0% 100%;      /* White text */
 
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 100%;
 
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --ring: 207 90% 54%;                 /* Blue ring */
 
-  --radius: 0.5rem;
+  --radius: 0.5rem;                    /* 8px border radius */
 
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;
@@ -43,6 +86,12 @@ All colors MUST be HSL.
   --sidebar-accent-foreground: 240 5.9% 10%;
   --sidebar-border: 220 13% 91%;
   --sidebar-ring: 217.2 91.2% 59.8%;
+
+  /* Zylo Custom Properties */
+  --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-button: 0 2px 8px rgba(33, 150, 243, 0.3);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --container-max: 1200px;
 }
 
 .dark {
@@ -157,7 +206,130 @@ All colors MUST be HSL.
   border-color: hsl(var(--border));
 }
 
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.6;
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+}
+
+/* Typography Scale - Pixel-Perfect Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: inherit;
+}
+
+h1 {
+  font-size: 3rem;      /* 48px - Hero headline */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.25rem;   /* 36px - Section headers */
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;    /* 24px - Subsection headers */
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;   /* 20px - Card titles */
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.125rem;  /* 18px */
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1rem;      /* 16px */
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+a {
+  color: hsl(var(--accent));
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: hsl(var(--accent) / 0.8);
+}
+
+/* Button Defaults */
+button {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+button:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Form Element Defaults */
+input, select, textarea {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1);
+}
+
+/* Utility Classes for Zylo Design */
+.container-zylo {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 7.5rem 0;
+  }
 }
